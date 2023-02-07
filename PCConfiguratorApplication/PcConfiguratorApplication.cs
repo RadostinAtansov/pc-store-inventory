@@ -42,7 +42,7 @@ string[] inputPartNumberCPU = Console.ReadLine().Split(", ");
 
 
 
-//Logic for parts that are compatible each other and make configuration easy for user
+//Logic for parts that are compatible each other and make configuration easy for user and you can stop program with Buy word
 
 
 
@@ -56,6 +56,8 @@ while (inputPartNumberCPU[0] != "Buy")
     var motherboard = dToPcStore.Motherboards.FirstOrDefault(c => c.PartNumber == inputPartNumberCPU[0]);
     var memory = dToPcStore.Memory.FirstOrDefault(c => c.PartNumber == inputPartNumberCPU[0]);
 
+    //if there is one part CPU we show all possible configuration combinations and if part is npt valid ERROR
+    
     if (inputPartNumberCPU.Length == 1)
     {
         if (cpu != null)
@@ -94,6 +96,10 @@ while (inputPartNumberCPU[0] != "Buy")
             continue;
         }
     }
+    
+    //If there is two parts that are compatible we show all possible configuration combinations 
+    //and if they are not compatible or valid ERROR and message wwhich part that are not compatible
+    
     else if (inputPartNumberCPU.Length == 2)
     {
         motherboard = dToPcStore.Motherboards.FirstOrDefault(c => c.PartNumber == inputPartNumberCPU[1]);
@@ -135,6 +141,12 @@ while (inputPartNumberCPU[0] != "Buy")
             continue;
         }
     }
+    
+    
+    //If there is three parts that are compatible we show all possible configuration combinations 
+    //and if they are not compatible or valid ERROR and message which part that are not compatible
+    
+    
     else if (inputPartNumberCPU.Length == 3)
     {
         cpu = dToPcStore.CPUs.FirstOrDefault(c => c.PartNumber == inputPartNumberCPU[0]);
